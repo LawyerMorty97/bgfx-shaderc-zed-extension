@@ -10,3 +10,7 @@ snippets = ["./snippets/bgfx shaderc.json"]
 [grammars.glsl]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-glsl"
 rev = "b0df9f9959665b7a17861d3ad26a786a9eb89fe1"
+
+[language_servers.bgfx-shader-analyzer]
+name = "bgfx shader analyzer"
+languages = ["bgfx shaderc"]

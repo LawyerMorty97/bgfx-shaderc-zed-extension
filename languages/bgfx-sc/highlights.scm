@@ -2,11 +2,19 @@
 (preproc_directive) @preproc
 (comment) @comment
 (number_literal) @number
+(char_literal) @number
 (string_literal) @string
+(system_lib_string) @string
 
 (identifier) @variable
 (type_identifier) @type
+(primitive_type) @type.builtin
+(sized_type_specifier) @type.builtin
 (field_identifier) @property
+(statement_identifier) @label
+
+(function_declarator
+  declarator: (identifier) @function)
 
 (function_declarator
   (identifier) @function)
@@ -14,9 +22,70 @@
 (call_expression
   function: (identifier) @function)
 
-; Keywords and builtin types matched safely through identifiers.
+(call_expression
+  function: (field_expression
+    field: (field_identifier) @function))
+
+(preproc_function_def
+  name: (identifier) @function.special)
+
+[
+  "break"
+  "case"
+  "const"
+  "continue"
+  "default"
+  "do"
+  "else"
+  "enum"
+  "extern"
+  "for"
+  "if"
+  "inline"
+  "return"
+  "sizeof"
+  "static"
+  "struct"
+  "switch"
+  "typedef"
+  "union"
+  "volatile"
+  "while"
+] @keyword
+
+[
+  "in"
+  "out"
+  "inout"
+  "uniform"
+  "shared"
+  "layout"
+  "attribute"
+  "varying"
+  "buffer"
+  "coherent"
+  "readonly"
+  "writeonly"
+  "precision"
+  "highp"
+  "mediump"
+  "lowp"
+  "centroid"
+  "sample"
+  "patch"
+  "smooth"
+  "flat"
+  "noperspective"
+  "invariant"
+  "precise"
+] @type.qualifier
+
+"subroutine" @keyword.function
+(extension_storage_class) @keyword.storage
+
+; Extra bgfx/GLSL words that may parse as identifiers in shaderc-flavoured code.
 ((identifier) @keyword
-  (#match? @keyword "^(if|else|for|while|do|switch|case|default|break|continue|return|discard|struct|uniform|in|out|inout|const|varying|smooth|flat|centroid|noperspective)$"))
+  (#match? @keyword "^(discard)$"))
 
 ((type_identifier) @type.builtin
   (#match? @type.builtin "^(void|bool|int|uint|float|vec2|vec3|vec4|ivec2|ivec3|ivec4|uvec2|uvec3|uvec4|bvec2|bvec3|bvec4|mat2|mat3|mat4|mat2x2|mat2x3|mat2x4|mat3x2|mat3x3|mat3x4|mat4x2|mat4x3|mat4x4|sampler2D|sampler2DArray|sampler2DShadow|samplerCube|sampler3D|sampler2DMS|isampler2D|usampler2D|isampler3D|usampler3D|isamplerCube|usamplerCube|isampler2DMS|usampler2DMS)$"))
@@ -78,3 +147,6 @@
 
 ((identifier) @variable.special
   (#match? @variable.special "^(gl_Position|gl_FragCoord|gl_FragColor|gl_InstanceID|gl_VertexID|gl_ViewportIndex|gl_Layer)$"))
+
+((identifier) @variable.builtin
+  (#match? @variable.builtin "^gl_"))

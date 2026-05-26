@@ -143,6 +143,23 @@
 ((ERROR) @preproc
   (#match? @preproc "^\\$(input|output|raw|end)$"))
 
+; Fallbacks for parser-recovery regions caused by bgfx directives.
+(ERROR
+  (identifier) @type.qualifier
+  (#match? @type.qualifier "^(uniform|const|in|out|inout|varying|attribute)$"))
+
+(ERROR
+  (identifier) @type.builtin
+  (#match? @type.builtin "^(void|bool|int|uint|float|vec2|vec3|vec4|mat2|mat3|mat4)$"))
+
+(ERROR
+  (type_identifier) @type.builtin
+  (#match? @type.builtin "^(void|bool|int|uint|float|vec2|vec3|vec4|mat2|mat3|mat4)$"))
+
+(ERROR
+  (identifier) @function
+  (#match? @function "^[A-Za-z_][A-Za-z0-9_]*$"))
+
 ((identifier) @function.builtin
   (#match? @function.builtin "^(SAMPLER2D|SAMPLER2DARRAY|SAMPLER2DSHADOW|SAMPLERCUBE|SAMPLER3D|IMAGE2D|IMAGE3D|IMAGECUBE|IMAGE2DARRAY|BUFFER_RO|BUFFER_RW|BUFFER_WO|IMAGE_RO|IMAGE_RW|IMAGE_WO|NUM_THREADS|mul|saturate|lerp|vec2_splat|vec3_splat|vec4_splat|mtxFromCols|mtxFromRows|toClipSpaceDepth|encodeNormalUint|decodeNormalUint|texture2D|texture2DProj|texture2DLod|texture2DProjLod|texture2DGrad|texture2DProjGrad|texture2DArray|texture2DArrayLod|texture2DLodOffset|texture3D|texture3DProj|texture3DLod|texture3DProjLod|texture3DGrad|texture3DProjGrad|textureCube|textureCubeLod|textureCubeGrad|shadow2D|shadow2DProj|shadow2DLod|shadow2DProjLod|shadow2DArray|textureSize|texelFetch|texelFetchOffset|dFdx|dFdy|fwidth|bitfieldReverse|floatBitsToInt|floatBitsToUint|intBitsToFloat|uintBitsToFloat|packHalf2x16|unpackHalf2x16)$"))
 

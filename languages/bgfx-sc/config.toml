@@ -1,6 +1,6 @@
 name = "bgfx shaderc"
 grammar = "glsl"
-path_suffixes = ["sc"]
+path_suffixes = ["sc", "def.sc"]
 
 line_comments = ["// "]
 block_comment = ["/*", "*/"]

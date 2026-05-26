@@ -2,8 +2,8 @@
   "BGFX Vertex Shader": {
     "prefix": "vs",
     "body": [
-      "$input a_position",
-      "$output v_texcoord0",
+      "\\$input a_position",
+      "\\$output v_texcoord0",
       "",
       "#include \"common.sh\"",
       "#include \"bgfx_shader.sh\"",
@@ -19,7 +19,7 @@
   "BGFX Fragment Shader": {
     "prefix": "fs",
     "body": [
-      "$input v_texcoord0",
+      "\\$input v_texcoord0",
       "",
       "#include \"common.sh\"",
       "#include \"bgfx_shader.sh\"",

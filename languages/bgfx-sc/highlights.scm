@@ -1,5 +1,12 @@
 ; Base GLSL-ish highlighting
 (preproc_directive) @preproc
+(preproc_include) @preproc
+(preproc_def) @preproc
+(preproc_function_def) @preproc
+(preproc_if) @preproc
+(preproc_ifdef) @preproc
+(preproc_else) @preproc
+(preproc_elif) @preproc
 (comment) @comment
 (number_literal) @number
 (char_literal) @number
@@ -52,6 +59,17 @@
   "volatile"
   "while"
 ] @keyword
+
+[
+  "#define"
+  "#elif"
+  "#else"
+  "#endif"
+  "#if"
+  "#ifdef"
+  "#ifndef"
+  "#include"
+] @preproc
 
 [
   "in"
@@ -119,6 +137,9 @@
 
 ; bgfx shaderc builtins/macros
 ((identifier) @preproc
+  (#match? @preproc "^\\$(input|output|raw|end)$"))
+
+((ERROR) @preproc
   (#match? @preproc "^\\$(input|output|raw|end)$"))
 
 ((identifier) @function.builtin

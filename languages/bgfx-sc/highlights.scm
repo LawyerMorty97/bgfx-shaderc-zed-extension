@@ -13,45 +13,15 @@
 (call_expression
   function: (identifier) @function)
 
-[
-  "if"
-  "else"
-  "for"
-  "while"
-  "do"
-  "switch"
-  "case"
-  "default"
-  "break"
-  "continue"
-  "return"
-] @keyword
+; Keywords and builtin types matched safely through identifiers.
+((identifier) @keyword
+  (#match? @keyword "^(if|else|for|while|do|switch|case|default|break|continue|return|discard|struct|uniform|in|out|inout|const|varying)$"))
 
-[
-  "struct"
-  "uniform"
-  "in"
-  "out"
-  "inout"
-  "const"
-  "varying"
-] @keyword
+((type_identifier) @type.builtin
+  (#match? @type.builtin "^(void|bool|int|uint|float|vec2|vec3|vec4|mat2|mat3|mat4|sampler2D|samplerCube)$"))
 
-[
-  "void"
-  "bool"
-  "int"
-  "uint"
-  "float"
-  "vec2"
-  "vec3"
-  "vec4"
-  "mat2"
-  "mat3"
-  "mat4"
-  "sampler2D"
-  "samplerCube"
-] @type.builtin
+((identifier) @type.builtin
+  (#match? @type.builtin "^(void|bool|int|uint|float|vec2|vec3|vec4|mat2|mat3|mat4|sampler2D|samplerCube)$"))
 
 [
   "+"
@@ -72,9 +42,6 @@
 ] @operator
 
 ; bgfx shaderc builtins/macros
-((identifier) @keyword
-  (#match? @keyword "^discard$"))
-
 ((identifier) @preproc
   (#match? @preproc "^\\$(input|output)$"))
 

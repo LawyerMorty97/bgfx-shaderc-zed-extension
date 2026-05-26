@@ -133,6 +133,7 @@
   "-="
   "*="
   "/="
+  ":"
 ] @operator
 
 ; bgfx shaderc builtins/macros
@@ -147,6 +148,10 @@
 
 ((identifier) @constant.builtin
   (#match? @constant.builtin "^(BGFX_SHADER_LANGUAGE_|BGFX_SHADER_TYPE_|BX_PLATFORM_)"))
+
+; varying.def.sc semantics / HLSL-style shader semantics.
+((identifier) @constant.builtin
+  (#match? @constant.builtin "^(POSITION|NORMAL|TANGENT|BITANGENT|BINORMAL|COLOR[0-3]?|TEXCOORD[0-7]?|BLENDINDICES|BLENDWEIGHT|SV_[A-Za-z0-9_]+)$"))
 
 ; Common bgfx naming conventions
 ((identifier) @constant

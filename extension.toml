@@ -5,6 +5,7 @@ schema_version = 1
 authors = ["Mathias Berntsen"]
 description = "Extension for parsing BGFX ShaderC shader files"
 repository = "https://github.com/LawyerMorty97/bgfx-shaderc-zed-extension"
+snippets = ["./snippets/bgfx shaderc.json"]
 
 [grammars.glsl]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-glsl"

@@ -1,0 +1,11 @@
+id = "bgfx-shaderc"
+name = "BGFX ShaderC"
+version = "0.0.1"
+schema_version = 1
+authors = ["Mathias Berntsen <mathias@berntsen.solutions>"]
+description = "Extension for parsing BGFX ShaderC shader files"
+repository = "https://github.com/LawyerMorty97/bgfx-shaderc-zed-extension"
+
+[grammers.glsl]
+repository = "https://github.com/theHamsta/tree-sitter-glsl"
+rev = "88408ffc5e27abcffced7010fc77396ae3636d7e"

@@ -7,5 +7,5 @@ description = "Extension for parsing BGFX ShaderC shader files"
 repository = "https://github.com/LawyerMorty97/bgfx-shaderc-zed-extension"
 
 [grammars.glsl]
-repository = "https://github.com/theHamsta/tree-sitter-glsl"
-rev = "88408ffc5e27abcffced7010fc77396ae3636d7e"
+repository = "https://github.com/tree-sitter-grammars/tree-sitter-glsl"
+rev = "b0df9f9959665b7a17861d3ad26a786a9eb89fe1"

@@ -58,8 +58,18 @@
 ((identifier) @constant.builtin
   (#match? @constant.builtin "^(BGFX_SHADER_LANGUAGE_|BGFX_SHADER_TYPE_|BX_PLATFORM_)"))
 
+; Common bgfx naming conventions
 ((identifier) @constant
   (#match? @constant "^u_[A-Za-z0-9_]+$"))
+
+((identifier) @property
+  (#match? @property "^s_[A-Za-z0-9_]+$"))
+
+((identifier) @variable.special
+  (#match? @variable.special "^v_[A-Za-z0-9_]+$"))
+
+((identifier) @variable.parameter
+  (#match? @variable.parameter "^a_[A-Za-z0-9_]+$"))
 
 ((identifier) @variable.special
   (#match? @variable.special "^(gl_Position|gl_FragCoord|gl_FragColor|gl_InstanceID|gl_VertexID)$"))

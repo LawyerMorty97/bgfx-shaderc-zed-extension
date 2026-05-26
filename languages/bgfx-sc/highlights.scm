@@ -25,7 +25,6 @@
   "break"
   "continue"
   "return"
-  "discard"
 ] @keyword
 
 [
@@ -73,6 +72,9 @@
 ] @operator
 
 ; bgfx shaderc builtins/macros
+((identifier) @keyword
+  (#match? @keyword "^discard$"))
+
 ((identifier) @preproc
   (#match? @preproc "^\\$(input|output)$"))
 
